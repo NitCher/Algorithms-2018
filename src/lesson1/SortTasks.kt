@@ -33,7 +33,23 @@ import java.io.File
  * В случае обнаружения неверного формата файла бросить любое исключение.
  */
 fun sortTimes(inputName: String, outputName: String) {
-    TODO()
+    if (inputName.isEmpty()) {
+        throw IllegalArgumentException()
+    }
+    val inp = File(inputName).readLines()
+    val inpList = mutableListOf<Int>()
+    val out = File(outputName).bufferedWriter()
+    for (i in 0..inp.size) {
+        val x = inp[i].split(":")
+        inpList.add(x[0].toInt() * 3600 + x[1].toInt() * 60 + x[2].toInt())
+    }
+    val inpInt = inpList.toIntArray()
+    insertionSort(inpInt)
+    for (i in 0..inpList.size) {
+        out.write(String.format("%02d:%02d:%02d", inpInt[i] / 3600, inpInt[i] % 3600 / 60, inpInt[i] % 60))
+        out.newLine()
+    }
+    out.close()
 }
 
 /**
