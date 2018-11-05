@@ -39,13 +39,13 @@ fun sortTimes(inputName: String, outputName: String) {
     val inp = File(inputName).readLines()
     val inpList = mutableListOf<Int>()
     val out = File(outputName).bufferedWriter()
-    for (i in 0..inp.size) {
+    for (i in 0..inp.lastIndex) {
         val x = inp[i].split(":")
         inpList.add(x[0].toInt() * 3600 + x[1].toInt() * 60 + x[2].toInt())
     }
     val inpInt = inpList.toIntArray()
     insertionSort(inpInt)
-    for (i in 0..inpList.size) {
+    for (i in 0..inpList.lastIndex) {
         out.write(String.format("%02d:%02d:%02d", inpInt[i] / 3600, inpInt[i] % 3600 / 60, inpInt[i] % 60))
         out.newLine()
     }
@@ -116,12 +116,12 @@ fun sortTemperatures(inputName: String, outputName: String) {
     val inp = File(inputName).readLines()
     val inList = mutableListOf<Double>()
     val out = File(outputName).bufferedWriter()
-    for (i in 0..inp.size) {
+    for (i in 0..inp.lastIndex) {
         val double = inp[i].toDouble()
         inList.add(double)
     }
     inList.sort()
-    for (i in 0..inList.size) {
+    for (i in 0..inList.lastIndex) {
         out.write(inList[i].toString())
         out.newLine()
     }
