@@ -2,6 +2,8 @@
 
 package lesson2
 
+import java.io.File
+
 /**
  * Получение наибольшей прибыли (она же -- поиск максимального подмассива)
  * Простая
@@ -27,7 +29,7 @@ package lesson2
  * В случае обнаружения неверного формата файла бросить любое исключение.
  */
 fun optimizeBuyAndSell(inputName: String): Pair<Int, Int> {
-    TODO()
+TODO()
 }
 
 /**
@@ -115,7 +117,28 @@ fun longestCommonSubstring(first: String, second: String): String {
  * Единица простым числом не считается.
  */
 fun calcPrimesNumber(limit: Int): Int {
-    TODO()
+    var result = 0
+    when(limit) {
+        0 -> return 0
+        1 -> return 0
+        else -> {
+            val list = mutableListOf<Int>()
+            for (i in 0..limit) list.add(1)
+            var x = 2
+            while (x * x <= limit) {
+                if (list[x] == 1) {
+                    var y = x * x
+                    while (y <= limit) {
+                        list[y] = 0
+                        y += x
+                    }
+                }
+                x++
+            }
+            for(i in 2..limit) if (list[i] == 1) result++
+            return result
+        }
+    }
 }
 
 /**
