@@ -118,9 +118,6 @@ fun sortTemperatures(inputName: String, outputName: String) {
     val out = File(outputName).bufferedWriter()
     for (i in 0..inp.size) {
         val double = inp[i].toDouble()
-        if (double <= -273.0 || i >= 500.0) {
-            throw Throwable("Not in range")
-        }
         inList.add(double)
     }
     inList.sort()
