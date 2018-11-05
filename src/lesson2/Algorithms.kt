@@ -77,7 +77,16 @@ fun optimizeBuyAndSell(inputName: String): Pair<Int, Int> {
  * Х х Х
  */
 fun josephTask(menNumber: Int, choiceInterval: Int): Int {
-    TODO()
+    return when (choiceInterval) {
+        1 -> menNumber
+        2 -> 1
+        else -> myFun(menNumber, choiceInterval) + 1
+    }
+}
+
+private fun myFun(num: Int, x: Int): Int {
+    return if (num == 1) 0
+    else (myFun(num - 1, x) + x) % num
 }
 
 /**
