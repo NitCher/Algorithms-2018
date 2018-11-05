@@ -2,6 +2,8 @@
 
 package lesson1
 
+import java.io.File
+
 /**
  * Сортировка времён
  *
@@ -95,8 +97,24 @@ fun sortAddresses(inputName: String, outputName: String) {
  * 121.3
  */
 fun sortTemperatures(inputName: String, outputName: String) {
-    TODO()
+    val inp = File(inputName).readLines()
+    val inList = mutableListOf<Double>()
+    val out = File(outputName).bufferedWriter()
+    for (i in 0..inp.size) {
+        val double = inp[i].toDouble()
+        if (double <= -273.0 || i >= 500.0) {
+            throw Throwable("Not in range")
+        }
+        inList.add(double)
+    }
+    inList.sort()
+    for (i in 0..inList.size) {
+        out.write(inList[i].toString())
+        out.newLine()
+    }
+    out.close()
 }
+
 
 /**
  * Сортировка последовательности
